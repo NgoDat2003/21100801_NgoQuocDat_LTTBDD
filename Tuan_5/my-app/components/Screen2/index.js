@@ -1,123 +1,154 @@
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import react, { useState } from "react";
 
-export default function Screen_2() {
+function Screen2() {
+  const [changePic, setChangePic] = useState(
+    require("../../assets/vs_silver.png")
+  );
+  const [changeTextColor, setChangeTextColor] = useState("bạc");
+  const handleLoginPressRed = () => {
+    setChangePic(require("../../assets/vs_red.png"));
+    setChangeTextColor("đỏ");
+  };
+  const handleLoginPressBlue = () => {
+    setChangePic(require("../../assets/vs_blue.png"));
+    setChangeTextColor("xanh dương");
+  };
+  const handleLoginPressBlack = () => {
+    setChangePic(require("../../assets/vs_black.png"));
+    setChangeTextColor("đen");
+  };
+  const handleLoginPressSilver = () => {
+    setChangePic(require("../../assets/vs_silver.png"));
+    setChangeTextColor("bạc");
+  };
   return (
-    <View
-      style={{
-        display: "flex",
-        alignItems: "center",
-        width: "100%",
-        marginTop: 20,
-        paddingRight: 40,
-        paddingLeft: 40,
-        gap: 15,
-      }}
-    >
-      <View style={{ width: 150, height: 200 }}>
-        <Image
-          style={{ width: 150, height: 200 }}
-          source={require("../../assets/anh1.jpg")}
-        />{" "}
-      </View>{" "}
-      <View style={{ width: "100%" }}>
-        <Text style={{ textAlign: "left" }}>
-          {" "}
-          Điện thoại VSmart Joy 3 - Hàng Chính Hãng{" "}
-        </Text>{" "}
-      </View>{" "}
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
-        }}
-      >
-        <View style={{ display: "flex", flexDirection: "row", gap: 5 }}>
-          <Image source={require("../../assets/star.jpg")} />{" "}
-          <Image source={require("../../assets/star.jpg")} />{" "}
-          <Image source={require("../../assets/star.jpg")} />{" "}
-          <Image source={require("../../assets/star.jpg")} />{" "}
-          <Image source={require("../../assets/star.jpg")} />{" "}
-        </View>{" "}
+    <View style={styles.container}>
+      <View style={styles.product}>
+        <Image style={styles.imgPhone} source={changePic} />
         <View>
-          <Text> Xem 828 đánh giá </Text>{" "}
-        </View>{" "}
-      </View>{" "}
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
-        }}
-      >
-        <Text style={{ fontWeight: "bold" }}> 1.700 .000 đ </Text>{" "}
-        <Text style={{ textDecorationLine: "line-through", color: "gray" }}>
-          {" "}
-          1.700 .000 đ{" "}
-        </Text>{" "}
-      </View>{" "}
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
-        }}
-      >
-        <Text style={{ color: "red" }}> Ở đâu rẻ hơn hoàn tiền </Text>{" "}
-        <Image source={require("../../assets/anhhoi.jpg")} />{" "}
-      </View>{" "}
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
-        }}
-      >
+          <Text>Điện Thoại Vsmart Joy 3 Hàng chính hãng</Text>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <Text>Màu: </Text>
+            <Text style={{ fontWeight: "bold" }}>{changeTextColor} </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <Text>Cung cấp bởi: </Text>
+            <Text style={{ fontWeight: "bold" }}>Tiki tradding </Text>
+          </View>
+          <Text style={{ fontWeight: "bold" }}>1.790.000 đ</Text>
+        </View>
+      </View>
+      <View style={styles.chonMau}>
         <View
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-around",
             width: "100%",
-            gap: 4,
-            border: "1px solid gray",
-            padding: "4px",
-            cursor: "pointer",
+            justifyContent: "flex-start",
           }}
         >
-          <Text> </Text> <Text> 4 màu chọn màu </Text>{" "}
-          <Image source={require("../../assets/muitenphai.jpg")} />{" "}
-        </View>{" "}
-      </View>{" "}
-      <View
-        style={{
-          width: "100%",
-        }}
-      >
+          <Text>Chọn một màu bên dưới:</Text>
+        </View>
+
+        <View style={styles.colorss}>
+          <TouchableOpacity
+            style={styles.color1}
+            onPress={handleLoginPressSilver}
+          ></TouchableOpacity>
+          <TouchableOpacity
+            style={styles.color2}
+            onPress={handleLoginPressRed}
+          ></TouchableOpacity>
+          <TouchableOpacity
+            style={styles.color3}
+            onPress={handleLoginPressBlack}
+          ></TouchableOpacity>
+          <TouchableOpacity
+            style={styles.color4}
+            onPress={handleLoginPressBlue}
+          ></TouchableOpacity>
+        </View>
         <TouchableOpacity
-          style={{
-            backgroundColor: "red",
-            color: "white",
-            width: "100%",
-            textAlign: "center",
-            padding: "6px",
-            borderRadius: 4,
-            marginTop: 40,
+          style={styles.btnXong}
+          onPress={() => {
+             navigation.navigate("Screen_1");
           }}
         >
-          {" "}
-          Chọn mua{" "}
-        </TouchableOpacity>{" "}
-      </View>{" "}
+          <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
+            XONG
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  color1: {
+    width: 100,
+    height: 100,
+    backgroundColor: "#C5F1FB",
+  },
+  color2: {
+    width: 100,
+    height: 100,
+    backgroundColor: "#F30D0D",
+  },
+  color3: {
+    width: 100,
+    height: 100,
+    backgroundColor: "#000000",
+  },
+  color4: {
+    width: 100,
+    height: 100,
+    backgroundColor: "#234896",
+  },
+  colorss: {
+    marginTop: 10,
+    flexDirection: "column",
+    gap: 5,
+  },
+  imgPhone: {
+    width: 114,
+    height: 128,
+  },
+  product: {
+    flexDirection: "row",
+    gap: 5,
+    marginLeft: 10,
+    marginTop: 10,
+  },
+  chonMau: {
+    flex: 1,
+    marginTop: 10,
+    flexDirection: "column",
+    paddingTop: 10,
+    alignItems: "center",
+    backgroundColor: "#C4C4C4",
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  btnXong: {
+    width: "100%",
+    alignItems: "center",
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: "#1952E294",
+    marginTop: 30,
+  },
+});
+
+export default Screen2;

@@ -1,124 +1,126 @@
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useRoute } from '@react-navigation/native';
 
-export default function Screen_1({ navigation }) {
+const Stack = createStackNavigator();
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingLeft: 30,
+    paddingRight: 30,
+    justifyContent: 'center',
+  },
+  imgPhone: {
+    transform: [{ scale: 0.9 }],
+  },
+  stars: {
+    flexDirection: 'row',
+  },
+  productDetail: {
+    flexDirection: 'column',
+    gap: 5,
+  },
+  rate: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 10,
+  },
+  money: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 20,
+  },
+  returnMoney: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 10,
+  },
+  btnChooseColor: {
+    width: "100%",
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 10,
+  },
+  btnBuy: {
+    width: "100%",
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+});
+function Screen1({navigation}) {
   return (
-    <View
-      style={{
-        display: "flex",
-        alignItems: "center",
-        width: "100%",
-        marginTop: 20,
-        paddingRight: 40,
-        paddingLeft: 40,
-        gap: 15,
-      }}
-    >
-      <View style={{ width: 150, height: 200 }}>
-        <Image
-          style={{ width: 150, height: 200 }}
-          source={require("../../assets/anh1.jpg")}
-        />
-      </View>
-      <View style={{ width: "100%" }}>
-        <Text style={{ textAlign: "left" }}>
-          
-          Điện thoại VSmart Joy 3 - Hàng Chính Hãng
-        </Text>
-      </View>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
+    <View style={styles.container}>
+      <View style={styles.productDetail}>
+        <Image style={styles.imgPhone} source={require('../../assets/vs_blue.png')} /> 
+        <Text style={{
+          fontWeight: 'bold',
         }}
-      >
-        <View style={{ display: "flex", flexDirection: "row", gap: 5 }}>
-          <Image source={require("../../assets/star.jpg")} />
-          <Image source={require("../../assets/star.jpg")} />
-          <Image source={require("../../assets/star.jpg")} />
-          <Image source={require("../../assets/star.jpg")} />
-          <Image source={require("../../assets/star.jpg")} />
+        >Điện Thoại Vsmart Joy 3 - Hàng chính hãng</Text>
+        <View style={styles.rate}>
+          <View style={styles.stars}>
+            <Image source={require('../../assets/star.png')} />
+            <Image source={require('../../assets/star.png')} />
+            <Image source={require('../../assets/star.png')} />
+            <Image source={require('../../assets/star.png')} />
+            <Image source={require('../../assets/star.png')} />
+          </View>
+          <Text>(Xem 828 đánh giá)</Text>
         </View>
-        <View>
-          <Text> Xem 828 đánh giá </Text>
+        <View style={styles.money}>
+            <Text style={{
+              fontSize: 20,
+              fontWeight: 'bold',
+            }}
+            >1.790.000đ</Text>
+            <Text style={{
+              fontSize: 15,
+              fontWeight: 'bold',
+              textDecorationLine: 'line-through',
+              color: 'gray',
+            }}>1.790.000đ</Text>
+        </View>
+        <View style={styles.returnMoney}>
+            <Text style={{
+              color: 'red',
+              fontWeight: 'bold',
+            }}
+            >Ở ĐÂU RẺ HƠN HOÀN TIỀN</Text>
+            <Image source={require('../../assets/detail.png')} />
         </View>
       </View>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
+  
+      <TouchableOpacity style={styles.btnChooseColor}
+        onPress={() => {
+          navigation.navigate('Screen_2');
         }}
       >
-        <Text style={{ fontWeight: "bold" }}> 1.700 .000 đ </Text>
-        <Text style={{ textDecorationLine: "line-through", color: "gray" }}>
-          
-          1.700 .000 đ
-        </Text>
-      </View>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
+        <Text></Text>
+        <Text>4 MÀU-CHỌN MÀU</Text>
+        <Text>{'>'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btnBuy}>
+        <Text style={{
+          color: 'white',
+          fontWeight: 'bold',
         }}
-      >
-        <Text style={{ color: "red" }}> Ở đâu rẻ hơn hoàn tiền </Text>
-        <Image source={require("../../assets/anhhoi.jpg")} />
-      </View>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
-          gap: 4,
-        }}
-      >
-        <TouchableOpacity
-        onPress={() => navigation.push('Screen_2')}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-around",
-            width: "100%",
-            gap: 4,
-            border: "1px solid gray",
-            padding: "4px",
-            cursor: "pointer",
-          }}
-        >
-          <Text> </Text> <Text> 4 màu chọn màu </Text>
-          <Image source={require("../../assets/muitenphai.jpg")} />
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          width: "100%",
-        }}
-      >
-        <TouchableOpacity
-          style={{
-            backgroundColor: "red",
-            color: "white",
-            width: "100%",
-            textAlign: "center",
-            padding: "6px",
-            borderRadius: 4,
-            marginTop: 40,
-          }}
-        >
-          
-          Chọn mua
-        </TouchableOpacity>
-      </View>
+        >CHỌN MUA</Text>
+      </TouchableOpacity>
     </View>
   );
 }
+
+
+
+
+export default Screen1;
