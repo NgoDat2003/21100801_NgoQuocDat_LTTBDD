@@ -27,12 +27,9 @@ const TodoList = () => {
         const res = await axios.post("https://66fc9741c3a184a84d176b30.mockapi.io/bai1", {
             title: newTodo, 
         });
-        
         if(res && res.status===201){
             handleGetTodo();
         }
-
-
     }
     const handleAddTodo = () => {
         if (newTodo.trim()) {
@@ -40,11 +37,9 @@ const TodoList = () => {
             setNewTodo('');
         }
     };
-
     useEffect(() => {
         handleGetTodo();
     }, []);
-
     return (
         <View style={{ padding: 20 }}>
             <TextInput
